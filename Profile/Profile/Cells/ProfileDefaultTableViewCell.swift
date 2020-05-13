@@ -53,12 +53,20 @@ class ProfileDefaultTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
         shortSeparator = UIView.init(frame: CGRect(x: 120.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 0.5))
         shortSeparator?.isHidden = true
-        shortSeparator?.backgroundColor = .separator
+        if #available(iOS 13.0, *) {
+            shortSeparator?.backgroundColor = .separator
+        } else {
+            shortSeparator?.backgroundColor = .lightGray
+        }
         self.contentView.addSubview(shortSeparator!)
         
         bottomLine = UIView.init(frame: CGRect(x: 15.0, y: contentView.frame.height-0.5, width: UIScreen.main.bounds.size.width, height: 0.5))
         bottomLine?.isHidden = true
-        bottomLine?.backgroundColor = .separator
+        if #available(iOS 13.0, *) {
+            bottomLine?.backgroundColor = .separator
+        } else {
+            bottomLine?.backgroundColor = .lightGray
+        }
         self.contentView.addSubview(bottomLine!)
     }
 }

@@ -108,7 +108,11 @@ class ProfileTableData {
             let action = {
                 print("editAction")
             }
-            profileImageCell?.setData(image: UIImage(systemName: "person")!, editAction: action)
+            if #available(iOS 13.0, *) {
+                profileImageCell?.setData(image: UIImage(systemName: "person")!, editAction: action)
+            } else {
+                profileImageCell?.setData(image: UIImage(named: "person")!, editAction: action)
+            }
             if indexPath.row == 0 && indexPath.section == 0 {
                 profileImageCell?.hideBottomLine = false
             } else {

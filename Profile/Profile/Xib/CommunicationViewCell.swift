@@ -50,10 +50,20 @@ class CommunicationViewCell: UIView {
         emailView.isHidden = isEnabled
         
         titleView.text = isEnabled ? "Phone:" : "Email:"
-        let emailImage = isEnabled ? UIImage(systemName: "circle") : UIImage(systemName: "checkmark.circle")
-        emailButton.setImage(emailImage, for: .normal)
-        let phoneImage = isEnabled ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
-        phoneButton.setImage(phoneImage, for: .normal)
+        if #available(iOS 13.0, *) {
+            let emailImage = isEnabled ? UIImage(systemName: "circle") : UIImage(systemName: "checkmark.circle")
+            emailButton.setImage(emailImage, for: .normal)
+        } else {
+            let emailImage = isEnabled ? UIImage(named: "circle") : UIImage(named: "checkmark")
+            emailButton.setImage(emailImage, for: .normal)
+        }
+        if #available(iOS 13.0, *) {
+            let phoneImage = isEnabled ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
+            phoneButton.setImage(phoneImage, for: .normal)
+        } else {
+            let phoneImage = isEnabled ? UIImage(named: "checkmark") : UIImage(named: "circle")
+            phoneButton.setImage(phoneImage, for: .normal)
+        }
         view.layoutIfNeeded()
     }
     
